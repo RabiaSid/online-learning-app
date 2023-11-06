@@ -13,9 +13,9 @@ import { PiNotePencilDuotone } from "react-icons/pi";
 import IconButton from "../../components/button/icon-button";
 import DashboardLayout from "../../layout/dashboard-layout";
 import { Breadcrumb } from "antd";
-import CourseList from "./course-list";
-import UserList from "./users-list";
-import Dashboard from "./dashboard";
+// import CourseList from "./course-list";
+// import UserList from "./users-list";
+// import Dashboard from "./dashboard";
 
 type Page = {
   name: string;
@@ -23,7 +23,7 @@ type Page = {
   icon?: React.ReactNode;
 };
 
-export default function AdminDashboard() {
+export default function StudentDashboard() {
   const [check, setCheck] = useState("Dashboard");
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,8 +40,18 @@ export default function AdminDashboard() {
       icon: <FiBookOpen className="Start_icon" />,
     },
     {
-      name: "Users",
-      route: "users",
+      name: "Assignment",
+      route: "assignment",
+      icon: <HiOutlineUsers className="Start_icon" />,
+    },
+    {
+      name: "Test",
+      route: "test",
+      icon: <HiOutlineUsers className="Start_icon" />,
+    },
+    {
+      name: "Schedule",
+      route: "schedule",
       icon: <HiOutlineUsers className="Start_icon" />,
     },
   ];
@@ -53,7 +63,7 @@ export default function AdminDashboard() {
     } else {
       setCheck(RouteName);
     }
-    navigate(`/admin-dashboard/${route}`);
+    navigate(`/student-dashboard/${route}`);
   };
 
   return (
@@ -66,7 +76,7 @@ export default function AdminDashboard() {
             .map((page, index) => (
               <Breadcrumb.Item key={index}>
                 <Link
-                  to={`/admin-dashboard/${page.route}`}
+                  to={`/student-dashboard/${page.route}`}
                   style={{
                     textDecoration: "none",
                     fontWeight: "bold",
@@ -94,9 +104,9 @@ export default function AdminDashboard() {
       ))}
     >
       <Routes>
-        <Route path="" element={<Dashboard />} />
+        {/* <Route path="" element={<Dashboard />} />
         <Route path="courses" element={<CourseList />} />
-        <Route path="users" element={<UserList />} />
+        <Route path="users" element={<UserList />} /> */}
       </Routes>
     </DashboardLayout>
   );

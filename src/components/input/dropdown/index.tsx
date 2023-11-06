@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import baseColors from "../../../constant";
 
 type propsInputSelect = {
   SelectValue?: string;
   HeaderValue?: string;
   name?: string;
   SelectOnChange?: (...args: any[]) => any;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export default function InputSelect(props: propsInputSelect) {
@@ -16,7 +17,7 @@ export default function InputSelect(props: propsInputSelect) {
   return (
     <>
       <Select
-        className="border-2 border-teal-700 focus:border-teal-100 w-full outline-none rounded my-1 "
+        className="border w-100 rounded "
         labelId="country-select-label"
         id="country-select"
         name={name}
@@ -35,8 +36,9 @@ export default function InputSelect(props: propsInputSelect) {
             borderColor: "transparent", // Remove border on focus
             border: "none",
           },
-          height: "6vh",
-          background: "white",
+          height: "5vh",
+          background: baseColors.shadowGrey,
+
         }}
       >
         <MenuItem

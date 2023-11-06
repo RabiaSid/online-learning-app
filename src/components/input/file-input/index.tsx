@@ -1,4 +1,6 @@
 import { ImUpload } from "react-icons/im";
+import baseColors from "../../../constant";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 type FileUploadProps = {
   onChange?: (...args: any[]) => any;
@@ -8,12 +10,6 @@ type FileUploadProps = {
 export default function FileUpload(props: FileUploadProps) {
   const { onChange, value } = props;
 
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file && onChange) {
-  //     onChange(file); // Pass the selected file to the parent component
-  //   }
-  // };
   return (
     <div className="flex items-center justify-center w-full">
       <label
@@ -21,27 +17,27 @@ export default function FileUpload(props: FileUploadProps) {
         rounded-lg cursor-pointer 
         "
       >
-        <div>
-          <ImUpload className="text-sky-500" size={36} />
-        </div>
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            <span className="font-semibold">Click to upload</span> or drag and
-            drop
-          </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            SVG, PNG, JPG or GIF (MAX. 800x400px)
-          </p>
-        </div>
+        <div
+        className=" row d-flex justify-content-center align-items-center text-center rounded-5"
+        style={{
+          height: "7vh",
+          width: "3.2vw",
+          background: baseColors.shadowGrey,
+        }}
+      >
+        <BsFillPersonPlusFill size={24} color={baseColors.dark} />
+      </div>
         <input
           id="dropzone-file"
           type="file"
-          className="hidden"
+          className="hidden d-none"
           accept=".svg, .png, .jpg, .jpeg, .gif"
           onChange={onChange}
           value={value}
+          alt="upload only .png, .jpg, .jpeg "
         />
-      </label>
-    </div>
+        
+       </label>
+     </div>
   );
 }

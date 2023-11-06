@@ -24,15 +24,16 @@ export default function DashboardLayout(props: PropsType) {
 
   return (
     <div
-      className="row m-0 p-0"
+      className="row m-0 p-0 "
       style={{
         border: "1px solid red",
         height: "100vh",
+        background:"#F9F6F2"
       }}
     >
       <div
-        className="col-2 d-flex flex-column justify-content-between"
-        style={{ border: "1px solid transparent", borderRightColor: "#EDEDF2" }}
+        className="col-2 d-flex flex-column justify-content-between px-4"
+        style={{ border: "1px solid transparent", borderRightColor: "#EDEDF2" ,background:"#ffffff" }}
       >
         <div className="row py-3">
           <img src={Logo} />
@@ -42,7 +43,7 @@ export default function DashboardLayout(props: PropsType) {
         </div>
         <div className="row  d-flex justify-content-center">
           <div
-            className="text-center w-75"
+            className="text-center "
             style={{
               border: "1px solid transparent",
               background: baseColors.shadowGrey,
@@ -50,11 +51,11 @@ export default function DashboardLayout(props: PropsType) {
               padding: 5,
             }}
           >
-            <h5>version 1.12</h5>
-            <h6>17:24:00 08/3/2023</h6>
+            <h5 style={{fontSize:"0.8rem"}}>version 1.12</h5>
+            <h6 style={{fontSize:"0.7rem"}}>17:24:00 08/3/2023</h6>
           </div>
-          <div className=" text-center w-75 py-3">
-            <h6>@ 2023 company is copyright</h6>
+          <div className=" text-center  py-3">
+            <h6 style={{fontSize:"0.7rem"}}>@ 2023 company is copyright</h6>
           </div>
         </div>
       </div>
@@ -62,22 +63,22 @@ export default function DashboardLayout(props: PropsType) {
         className="col-10"
         // style={{ background: "transparent" }}
       >
-        <div className="row d-flex align-items-center justify-content-center border border-success  m-0 p-0">
-          <div className="col-3">{title}</div>
-          <div className="col-6 text-end">
+        <div className="row d-flex align-items-center justify-content-center   m-0 p-0" style={{background:"#ffffff"}}>
+          <div className="col-3 col-md-4 col-lg-3 ">{title}</div>
+          <div className="col-3 col-md-4 col-lg-6 text-end ">
             <IoSearch size={20} color={baseColors.dark} />
           </div>
-          <div className="col-3">
-            <div className="row d-flex align-items-center">
+          <div className="col-6 col-md-4 col-lg-3 ">
+            <div className="row d-flex align-items-center justify-content-between">
               <div className="col-2">
                 <BiSolidBellRing size={20} color={baseColors.dark} />
               </div>
               <div className="col-10">
-                <div className="row d-flex align-items-center ">
-                  <div className="col-3">
+                <div className="row d-flex align-items-center justify-content-between">
+                  <div className="col-4">
                     <img src={profile} />
                   </div>
-                  <div className="col-9">
+                  <div className="col-8">
                     <h5>user Name</h5>
                     <h6>User Role</h6>
                   </div>
@@ -86,12 +87,13 @@ export default function DashboardLayout(props: PropsType) {
             </div>
           </div>
         </div>
-        <div className="row d-flex align-items-center justify-content-center border border-success  m-0 p-0">
+        <div className="row d-flex align-items-center justify-content-center   m-0 p-0 ">
           <div className="col">
             {top}
           </div>
         </div>
-        <div className="row d-flex align-items-between justify-content-center border border-success  m-0 p-0">
+        <div className="row d-flex align-items-between justify-content-center m-0 p-0" >
+          
           {children}
         </div>
       </div>

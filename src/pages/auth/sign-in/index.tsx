@@ -10,8 +10,46 @@ import IconButton from "../../../components/button/icon-button";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import CheckboxLabels from "../../../components/check-box";
+import { fbLogin } from "../../../config/firebase/firebase-methods";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [model, setModel] = useState<any>({});
+
+  const fillModel = (key: string, val: any) => {
+    model[key] = val;
+    setModel({ ...model });
+  };
+
+  let LoginUser = () => {
+    console.log(model);
+    fbLogin(model)
+      .then((res: any) => {
+        if (res.role === "admin") {
+          // dispatch(add({ ...res }));
+          // console.log(add({ ...res }));
+          navigate("/admin-dashboard");
+        } else if (res.role === "institute") {
+          // dispatch(add({ ...res }));
+          // console.log(add({ ...res }));
+          navigate("/teacher-dashboard");
+        } else if (res.role === "student") {
+          // dispatch(add({ ...res }));
+          // console.log(add({ ...res }));
+          navigate("/student-dashboard");
+        } else {
+          // dispatch(add({ ...res }));
+          // console.log(add({ ...res }));
+          navigate("/*");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <AuthLayout>
       <div className=" row m-0 p-0 d-flex justify-content-center align-item-center w-100 ">
@@ -50,16 +88,16 @@ export default function SignIn() {
           <div className="py-2">
             <h6 style={{ color: baseColors.lightGrey }}>Email</h6>
             <IconInputfield
-              // value={model.email || ""}
-              // onChange={(e: any) => fillModel("email", e.target.value)}
+              value={model.email || ""}
+              onChange={(e: any) => fillModel("email", e.target.value)}
               label="Email"
             />
           </div>
           <div className="py-2">
             <h6 style={{ color: baseColors.lightGrey }}>Password</h6>
             <PasswordInputField
-              // value={model.password || ""}
-              // onChange={(e: any) => fillModel("password", e.target.value)}
+              value={model.password || ""}
+              onChange={(e: any) => fillModel("password", e.target.value)}
               label="Password"
             />
           </div>
@@ -82,7 +120,7 @@ export default function SignIn() {
 
           <div className="py-2">
             <PrimaryButton
-              // onClick={signUpUser}
+              onClick={LoginUser}
               label="Sign In"
             />
           </div>

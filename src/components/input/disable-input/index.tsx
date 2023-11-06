@@ -1,21 +1,23 @@
+import { UserOutlined } from "@ant-design/icons";
+import { Input } from "antd";
+
 type propsType = {
     label?: any;
     onChange?: (...args: any[]) => any;
     type?: string;
     value?: any;
-    disabled?:any;
   };
   
   export default function DisableInput(props: propsType) {
-    const { label, onChange, type, value, disabled } = props;
+    const { label, onChange, type, value } = props;
     return (
-      <input
-        className="p-3 border-2 border-teal-700 focus:border-teal-100 w-full outline-none rounded my-1 "
-        placeholder={label}
-        value={value}
-        onChange={onChange}
-        type={type ?? "text"}
-        disabled={true}
+      <Input
+      prefix={<UserOutlined />}
+      placeholder={label}
+      value={value}
+      onChange={onChange}
+      type={type ?? "text"}
+      disabled={true}
       />
     );
   }
